@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main()
+{
+	int arr[10]={0};
+	int i;
+	for(i=0;i<10;i++)
+	{
+		scanf("%d",&arr[i]);
+	} 
+	getchar();
+	int j;
+	int max=arr[0];
+	int ma=0;
+	for(j=0;j<10;j++)
+	{
+		if(max<arr[j])
+		{
+			ma=j;
+			max=arr[j];	
+		}	
+	} 
+	printf("%d %d\n",max,ma);
+	int h;
+	int min=arr[0];
+	int mi=0;
+	for(h=0;h<10;h++)
+	{
+		if(min>arr[h])
+		{
+			mi=h;
+			min=arr[h];	
+		}	
+	} 
+	printf("%d %d\n",min,mi);
+	
+	
+	return 0;
+}
