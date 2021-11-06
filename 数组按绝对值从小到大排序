@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <math.h>
+int main() 
+{
+	int arr[50]={0};
+	int n;
+	scanf("%d",&n); 
+	int v,b;
+	for(v=0;v<n;v++)
+	{
+		scanf("%d",&b);
+		arr[v]=b;
+	}
+	int i;
+	int j;
+	for (i=0;i<n-1;i++) 
+	{
+		for (j=0;j<n-i-1;j++) 
+		{
+			if (abs(arr[j])>abs(arr[j+1])) 
+			{
+				int t=arr[j];arr[j]=arr[j+1];arr[j+1]=t;
+			}
+			else if (abs(arr[j])==abs(arr[j+1]))
+			{
+				if(arr[j]<arr[j+1])
+				{
+					int s=arr[j];arr[j]=arr[j+1];arr[j+1]=s;
+				}
+			}
+		}
+	}
+	int p;
+	for (p=0;p<n;p++)
+	{
+		printf("%d ",arr[p]);
+	}
+	
+	
+	return 0;
+}
