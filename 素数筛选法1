@@ -1,0 +1,49 @@
+#include<stdio.h>
+#include<string.h>
+#include<math.h>
+int isPrime[1000011];
+void getprime();
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    getprime();
+    while(t--)
+    {
+        int n;
+        scanf("%d",&n);
+        if(isPrime[n])
+        {
+            printf("YES\n");
+        }
+        else
+        {
+            printf("NO\n");
+        }
+    }
+    return 0;
+} 
+
+
+void getprime()
+{
+	int cnt=1;
+     memset(isPrime,1,sizeof(isPrime));//先假设所有数是素数 
+     int i;
+	 for( i=2;i<=1000011;i++)//将所有数遍历 
+     {
+         if(isPrime[i])//判断是否素数 
+        isPrime[i]=1;//是的话加入素数表 
+         int j;
+		 for( j=i+i;j<=1000011;j+=i)//从这个数的最小的倍数开始 
+         {
+             isPrime[j]=0;
+			 isPrime[1]=0;//标记为非素数 
+        }
+ //        for(j=2;j*i<=maxn;j++)这是原型，上面是改进的 
+ //        { 
+ //            isprime[i*j]=false;
+ //        } 
+     }
+     return ;
+}
