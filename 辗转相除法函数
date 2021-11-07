@@ -1,0 +1,31 @@
+#include<stdio.h>
+int gcd(int x,int y);
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    while(t--)
+    {
+        int n,m;
+        scanf("%d %d",&n,&m);
+        printf("%d ",gcd(n,m));
+    }
+    return 0;
+}
+
+int gcd(int m,int n)
+{
+	int r;
+	while (1)
+	{
+		r=m%n;
+		if(r==0)
+		{
+			break;
+		}
+		m=n;
+		n=r;
+	
+	}
+		return n;
+}
