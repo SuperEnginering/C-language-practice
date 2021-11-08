@@ -1,0 +1,50 @@
+#include<stdio.h>
+
+int have7(int n)
+{
+	while(1)
+	{
+		int j=n%10;
+		if(j==7)
+		{
+			return 1;
+		}
+		n/=10;
+		if(n<=0)
+		{
+			return 0;
+			}	
+	}	
+}
+int beishu7(int n)
+{
+	int m=n%7;
+	if(m==0)
+	{
+		return 1;
+	}
+	else return 0;
+}
+
+int main()
+{
+    int T;
+    
+	scanf("%d",&T);
+	while (T--)
+	{
+		int n;
+		scanf("%d",&n);
+		if(have7(n)||beishu7(n))
+		{
+			printf("pa\n");	
+		}
+		else
+		{
+			printf("%d\n",n);
+			}	
+	} 
+    return 0;
+} 
+
+
