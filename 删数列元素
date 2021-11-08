@@ -1,0 +1,24 @@
+#include<stdio.h>
+int main() {
+	int hasPrinted;
+	int isFirstCase = 1;
+	int n, t = 0;
+	long long a, x;
+	while (~scanf("%d %lld", &n, &x)) {
+		hasPrinted = 0;
+		if (isFirstCase) isFirstCase = 0;
+		else puts("");
+		printf("Case %d:\n", ++t);
+		for (int i = 0; i<n; i++) {
+			scanf("%lld", &a);
+			if (a != x) {
+				if (hasPrinted) printf(" ");
+				printf("%lld", a);
+				hasPrinted = 1;
+			}
+		}
+		if (hasPrinted) puts("");
+		else puts("Empty!");
+	}
+	return 0;
+}
