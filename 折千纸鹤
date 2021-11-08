@@ -1,0 +1,37 @@
+#include<stdio.h>
+
+int main()
+{
+  	  int k;//people
+  	  int n;//number each people
+  	  int s;//number each paper
+  	  int p;//paper in a yibaozhi
+  	  scanf("%d%d%d%d",&k,&n,&s,&p);
+  
+ 		double papereach=1.0*n/s;//each people
+  	  	int each;
+		if(papereach-(int)papereach!=0)//判断是否整除 
+  	  	{
+  	  		 each=(int)papereach+1;
+		}
+		else 
+		{
+			each=papereach;
+		}
+		//	printf("%d\n",each);	
+		int paperall = each*k;
+		int m;
+		for(m=1;;++m)
+		{
+			if(m*p>=paperall)
+			{
+				break;
+				}	
+		}	
+			
+	printf("%d\n",m);
+  
+    return 0;
+} 
+
+
