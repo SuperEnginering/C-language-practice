@@ -1,0 +1,17 @@
+#include<stdio.h>
+int main(void){
+int a,b,d,sum,i=0,k;
+int aj[1000]={0};
+scanf("%d %d %d",&a,&b,&d);
+sum=a+b;
+while(sum>0){
+ aj[i]=sum%d;
+i++;
+sum/=d;
+}
+while(i){
+printf("%d",aj[i-1]);
+i--;
+}
+return 0;
+}
