@@ -1,0 +1,54 @@
+//选择法排序 
+//用选择法将N个整数按从小到大排序。
+//本题要求对任意给定的K（<N），输出扫描完第K遍后的中间结果数列。
+//输入格式：
+//输入在第1行中给出N和K（1≤K<N≤100），在第2行中给出N个待排序的整数，数字间以空格分隔。
+//输出格式：
+//在一行中输出选择排序法扫描完第K遍后的中间结果数列，数字间以空格分隔，但末尾不得有多余空格。
+//输入样例：
+//6 2
+//2 4 5 3 1 6
+//输出样例：
+//1 2 5 3 4 6
+#include <stdio.h>
+
+int main()
+{
+
+	int n,k;
+	scanf("%d %d",&n,&k);
+	int arr[n];
+	//in
+	int N;
+	for (N=0;N<n;N++)
+	{
+		scanf("%d",&arr[N]);
+	}
+	//select
+	int i,j;
+	
+	for(i=0;i<k;i++)
+	{
+		int imin=i;
+		for(j=i+1;j<n;j++)
+		{
+			if(arr[imin]>arr[j])
+			{
+				 imin=j;
+			}
+
+		}
+		int t=arr[imin];
+		arr[imin]=arr[i];
+		arr[i]=t;
+	}
+	//out
+
+	int M;
+	for (M=0;M<n;M++)
+	{
+		printf("%d ",arr[M]);
+	}
+	
+	return 0;
+ } 
