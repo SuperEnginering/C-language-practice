@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main()
+{
+	int n;
+	while( scanf("%d",&n) != EOF)
+	{	
+	
+		int sum=0;
+		int b;
+		while(n>0)
+		{
+		here:	b=n%10;
+				sum+=b;
+				n/=10;
+		}
+		if(sum>=10)
+		{
+			n=sum;
+			sum=0;
+			goto here;
+		}
+
+		else	printf("%d\n",sum);
+	}
+	
+
+	return 0;
+}
