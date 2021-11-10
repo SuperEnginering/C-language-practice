@@ -1,0 +1,86 @@
+#include <stdio.h>
+
+int main()
+{
+	int T;
+	scanf("%d",&T);
+	while(T--)
+	{
+		//输入 
+		int L,K;//  L等级  K有无黑照
+		scanf("%d %d",&L,&K);
+		int n;
+		int arr[5]={0};
+		//学长身高 
+		for(n=0;n<5;n++)
+		{
+			scanf("%d",&arr[n]);
+		}
+		//技能
+		int sum;
+		//K 1
+		if(K==1)
+		{
+			if(L>=16) sum=12;
+			else if(L>=11)	sum=8;
+			else if(L>=6) sum=5;
+			else sum=0;
+		}
+		else if(K==0)// K 0
+		{
+			if(L>=16) sum=10;
+			else if(L>=11)	sum=7;
+			else if(L>=6) sum=4;
+			else sum=0;
+		 } 
+		int i,j;
+		int flag=0;
+		int shou;
+		int fashe=sum;
+		//释放技能 
+		for(i=0;i<5;i++)
+		{
+			int shou=arr[i];
+			for(j=1;j<=sum;j++)
+			{
+				if(fashe==0) break;
+				shou-=300;
+				fashe--;
+				//printf("shou = %d\n",shou);
+				if(shou<=0) 
+				{
+					flag++;
+					break; 
+				}
+				
+					
+			}
+			if(fashe==0) break;
+		}
+		//printf("flag = %d\n",flag);
+		//输出 
+		switch(flag)
+		{
+			case 0:
+				printf("none\n");
+				break;
+			case 1:
+				printf("first blood\n");
+				break;
+			case 2:
+				printf("double kill\n");
+				break;
+			case 3:
+				printf("triple kill\n");
+				break;
+			case 4:
+				printf("ultra kill\n");
+				break;
+			case 5:
+				printf("rampage\n");
+				break;					
+		}
+	printf("\n");		
+	}
+	return 0;
+}
