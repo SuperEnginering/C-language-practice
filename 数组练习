@@ -1,0 +1,43 @@
+#include <stdio.h>
+int swap(int array[5][5], int n, int m);
+int main(void) {
+    int i, j;
+    int n, m, flag;
+    int array[5][5];
+    for(i = 0; i < 5; ++i) 
+	{
+		for(j = 0; j < 5; ++j) {
+    	    scanf("%d", &array[i][j]);
+    	}
+    }
+    scanf("%d%d", &n, &m);
+    flag = swap(array, n, m);
+    if(flag) {
+    	for(i = 0; i < 5; ++i) {
+            for(j = 0; j < 5; ++j) {
+                 printf("%4d", array[i][j]);
+            }
+            printf("\n");
+        }
+    }
+    else
+        printf("error\n");
+    return 0;
+}
+
+int swap(int array[5][5], int n, int m)
+{
+	if(n>=5||m>=5) return 0;
+	else 
+	{
+		int i,j;
+		for(i=0;i<5;i++)
+		{
+			int temp=array[n][i];
+				array[n][i]=array[m][i];
+				array[m][i]=temp;
+		}	
+			
+		return 1;
+	}	
+}
