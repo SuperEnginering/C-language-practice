@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+int main()
+{
+	 // M行数  N列数 
+	 int arr[5][5];
+	 int i,j;
+	 //input
+	 for(i=0;i<5;i++)
+	 {
+	  	for(j=0;j<5;j++)
+	  	{
+	   scanf("%d ",&arr[i][j]);
+	  	}
+	 }
+	 int sum[15]={0};
+	 //judge
+	 //幻方矩阵中每一行、每一列、每一对角线上的元素之和都是相等的
+	 for(i=0;i<5;i++)
+	 {
+	 	for(j=0;j<5;j++)
+	 	{
+	 		sum[i]+=arr[i][j];
+		 }
+	 }
+	 
+	 for(j=0;j<5;j++)
+	 {
+	 	for(i=0;i<5;i++)
+	 	{
+	 		sum[j+5]+=arr[i][j];
+		 }
+	 }
+	 
+	 for(i=0;i<5;i++)
+	 {
+	 	for(j=0;j<5;j++)
+	 	{
+	 		if(i==j) sum[10]+=arr[i][j];
+		 }
+	 }
+	 
+	 for(i=0;i<5;i++)
+	 {
+	 	for(j=0;j<5;j++)
+	 	{
+	 		if(i+j==4) sum[11]+=arr[i][j];
+		 }
+	 }
+	 for (i=0;i<=10;i++)
+	 {
+	 	if(sum[i] != sum[i+1]) break;
+	 }
+	 
+	 
+	 //output
+	  
+	 if(i==11) printf("幻方矩阵");
+	 else  printf("非幻方矩阵");
+	 return 0;
+}
