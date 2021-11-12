@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+//ishuiwen 
+void is(char str[])
+{
+	int i,j;
+	int size=strlen(str);
+
+	for (i=0,j=size-1;i<size/2;i++,j--)
+	{
+		char temp=str[i];
+		str[i]=str[j];
+		str[j]=temp;
+	}
+	
+	printf("%s\n",str);	
+
+}
+
+
+int main(void) {
+		char str[]={0};
+		gets(str);
+		is(str);
+		return 0;    	
+}
