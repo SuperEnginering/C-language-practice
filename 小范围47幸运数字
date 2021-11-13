@@ -1,0 +1,52 @@
+#include<stdio.h>
+
+int isluck(int n)
+{
+	int j,i,flag=0;
+	for(i=0;i<75;i++)
+	{
+		for(j=0;j<75;j++)
+		{
+			if( n==4*i+7*j ) 
+			{
+				flag=1;
+				break;
+			}
+			else flag=-1;
+		}
+		if(flag==1) break;
+	}
+			
+	if(flag==-1) return flag;		
+			printf("i=%d j=%d \n",i,j); 
+	//现在知道有几个4 几个7
+	long long int mm,nn;
+	
+	int sum1=0,si=4,sum2=0;
+	for( mm=1;mm<=i-1;mm++)
+	{
+		si=si*10+4;
+		
+		printf("si=%d\n",si);
+	}
+//	int qi=si*10;
+	long long int qi=si;
+	for(nn=1;nn<=j;nn++)
+	{
+		
+		qi=qi*10+7;
+		printf("qi=%lld\n",qi);
+	}
+	return qi;		
+}
+ 
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    
+	printf("%d\n",isluck(n));
+	  
+    return 0;
+} 
+
