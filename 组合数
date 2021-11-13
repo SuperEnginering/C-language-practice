@@ -1,0 +1,26 @@
+#include<stdio.h>
+int com(int x,int y);
+//组合数  从m个里去n个 有Cmn种取法
+ 
+int main()
+{
+    int a,b,t;
+    scanf("%d",&t);
+    while(t--)
+    {
+        scanf("%d %d",&a,&b);
+        printf("%d\n",com(a,b));
+    }
+    return 0;
+} 
+
+int  com(int x,int y)
+{
+	int ans=1;
+	int i;
+	for(i=1;i<=y;i++)
+	{
+		ans=ans*(x-y+i)/i;//注意一定要先乘再除	
+	}	
+	return ans;
+}
