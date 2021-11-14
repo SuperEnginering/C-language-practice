@@ -1,0 +1,37 @@
+#include<stdio.h>
+
+int main()
+{
+	
+    int n;
+    scanf("%d",&n);
+	int x=0;
+	while(n)
+	{
+		if(n%10==4||n%10==7)
+		{
+			x++;
+			n/=10;
+		}else break;
+		
+		//printf("n=%d,x=%d\n",n,x);
+	}   
+
+	while(x)
+	{
+		if(x%10==4||x%10==7)
+		{
+			x=x/10;	
+		}
+		else 
+		{
+
+			break;
+		}	
+		//printf("n=%d,x=%d\n",n,x);
+	} 
+	if(n==0&&x==0)  printf("YES\n");
+	else printf("NO\n");
+    return 0;
+} 
+
