@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int main()
+{
+	printf("__\n");
+	printf("\\ \\   _ ___\n");
+	printf(" \\ \\ | '_  \\\n");
+	printf("  \\ \\| | | |\n");
+	printf("   \\_\\_| |_|\n");
+	return 0;
+}
