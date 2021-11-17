@@ -1,0 +1,20 @@
+#include<stdio.h>
+int arr[1000][1000];
+int main()
+{
+	int N;
+	scanf("%d",&N);
+	
+	int m,n;
+	for(m=0;m<N;m++)
+	{
+		for(n=0;n<N;n++)
+		{
+			scanf("%d",&arr[m][n]);
+			
+		}
+	}
+	printf("%d %d %d %d",arr[0][0],arr[0][N-1],arr[N-1][0],arr[N-1][N-1]);
+	
+	return 0; 
+}
