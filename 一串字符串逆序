@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+
+void reverse(char* str)
+{
+	char* end = str; 
+	char tmp;
+	//using the str as an address
+	if(str)
+	{
+		while(*end)end++;
+		end--;
+ 
+		while(end > str)
+		{
+			tmp = *end;
+			*end-- = *str;
+			*str++ = tmp;
+		}
+	}
+}
+int main(){
+	char str[201];
+	gets(str);
+ 	reverse(str);
+ 	puts(str);
+	
+	return 0;
+}
