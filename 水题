@@ -1,0 +1,24 @@
+#include<stdio.h>
+
+int main(){
+
+	double a,b,h,A,B,H;
+	int t;
+	scanf("%d",&t);
+	while(t--)
+	{
+		scanf("%lf%lf%lf%lf%lf%lf",&A,&B,&H,&a,&b,&h);
+		double newh=(A*B*H)/(A*B-a*b);
+		
+		if(newh>=h)
+		{
+			printf("%.2f\n",(A*B*H+a*b*h)/(A*B));
+		}
+		else
+		{
+			printf("%.2f\n",newh);
+		}
+	}
+	
+	
+}
