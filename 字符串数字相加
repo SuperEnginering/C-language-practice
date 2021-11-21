@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <string.h>
+
+void  fan(int len,char a[])
+{
+	char temp;
+	int j;
+	for(j=0;j<len/2;j++)
+	{
+		temp=a[j];
+		a[j]=a[len-j-1];
+		a[len-j-1]=temp;	
+	}
+	
+}
+
+
+int main()
+{
+	int alen,blen,clen;
+	char a[1001],b[1001];
+	int T,i,j;
+	scanf("%d",&T);
+	for(j=1;j<=T;j++)
+	{
+	
+		//获取数字长度 
+		scanf("%s %s",a,b);
+//		printf("反转前a=%s\n",a);
+//		printf("反转前b=%s\n",b);		
+		alen=strlen(a);
+		blen=strlen(b);
+		//将数字反转，使其从个位开始对齐 
+		fan(alen,a);
+		fan(blen,b);
+//		printf("反转后a=%s\n",a);
+//		printf("反转后b=%s\n",b);	
+		//模拟加法
+		int i,sum;
+		int add=0;
+		char c[2000];
+		for(i=0;i<alen || i<blen;i++)
+		{
+			if(i<alen&&i<blen)
+			{
+				sum=a[i]-'0'+b[i]-'0'+add;
+			}
+			else if(i<alen)
+			{
+				sum=a[i]-'0'+add;
+			}
+			else if(i<blen)
+			{
+				sum=b[i]-'0'+add;
+			}
+			add=0;
+			//进位 
+			if(sum>9)
+			{
+				add=1;
+				sum-=10;
+			}
+			c[i]=sum+'0';
+		}
+	//若加完后还有进位，则补上
+		if(add) c[i++]=add+'0'; 
+		//printf("反转前：c=%s\n",c);
+		clen=strlen(c); 		
+		//逆序输出 
+		printf("Case %d:\n",j);
+		for (i--; i >= 0; i--)
+			printf("%c", c[i]);
+		puts("\n"); 
+	}
+	return 0;	
+}
