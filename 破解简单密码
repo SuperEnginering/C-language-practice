@@ -1,0 +1,101 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+	char n[101];
+	//scanf("%d",&n);
+	while(scanf("%s",n)!=EOF)
+	{		
+		int len=strlen(n);
+		int i;
+		for(i=0;i<len;i++)
+		{
+			
+			//switch
+			switch(n[i])
+			{
+				case 1:
+					{
+						n[i]='1';
+						break;	
+					}	
+				case 'a':
+				case 'b':
+				case 'c':
+					{
+						n[i]='2';	
+						break;
+					}
+				case 'd':
+				case 'e':
+				case 'f':
+					{
+						n[i]='3';	
+						break;
+					}
+				case 'g':
+				case 'h':
+				case 'i':
+					{
+						n[i]='4';	
+						break;
+					}
+				case 'j':
+				case 'k':
+				case 'l':
+					{
+						n[i]='5';	
+						break;
+					}			
+				case 'm':
+				case 'n':
+				case 'o':
+					{
+						n[i]='6';	
+						break;
+					}
+				case 'p':
+				case 'q':
+				case 'r':
+				case 's':	
+					{
+						n[i]='7';	
+						break;
+					}
+				case 't':
+				case 'u':
+				case 'v':
+					{
+						n[i]='8';	
+						break;
+					}
+				case 'w':
+				case 'x':
+				case 'y':
+				case 'z':	
+					{
+						n[i]='9';	
+						break;
+					}
+				case '0':
+					{
+						n[i]='0';
+						break;	
+					}				
+			}
+			//transform
+			//int A='a'-'A';
+			if(n[i]>=65&&n[i]<90)
+			{
+				n[i]+=33;
+			}
+			else if(n[i]==90)
+			{
+				n[i]+=7;
+			}
+		}
+		//put
+		printf("%s\n",n);	
+	}	
+	return 0;
+}
