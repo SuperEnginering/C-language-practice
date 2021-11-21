@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+
+int cow(int n)
+{
+	if(n<=3)
+	{
+		return 1;	
+	}
+	else 
+	{
+		return cow(n-1)+cow(n-3);
+	}
+}
+
+int main()
+{
+	int N;
+	scanf("%d",&N);//年数 
+	int sum=cow(N); 
+	printf("%d\n",sum);		
+	return 0;
+}
