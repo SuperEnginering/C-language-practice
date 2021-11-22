@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	char str[1001]={0};
+	int i=1;
+	getchar();//it's much important
+	for(i=1;i<=n;i++)
+	{
+		gets(str);
+		puts(str);
+		printf("\n");
+	}
+	while(scanf("%s",str)!=EOF)
+	{
+		puts(str);
+		printf("\n");
+	}	
+	return 0;
+}
