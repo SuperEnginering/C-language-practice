@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+//week = (day + 1 + 2*month + 3*(month + 1)/5 
+ // + year+ (year/4) - year/100 + year/400) % 7
+//根据日期判断星期几可以使用基姆拉尔森计算公式
+
+
+int main()
+{
+	int T;
+	//scanf("%d",&T);
+	while( scanf("%d",&T)!=EOF)
+	{
+		while (T--)
+		{		
+
+			int year;//7个一循环 
+			scanf("%d",&year);
+			int week=(1+1+2*5+3*(5+1)/5+year+year/4-year/100+year/400 )%7;
+			int day=0;
+			switch(week)
+			{
+				case 0:
+					{
+						day=6;
+						break;
+					}
+				case 1:
+					{
+						day=9;
+						break;
+					}
+				case 2:
+					{
+						day=6;
+						break;
+					}	
+				default:
+					{
+						day=5;
+						break;	
+					}			
+			} 
+			printf("%d\n",day);	  
+		}
+	}
+	
+	
+	return 0;
+}
