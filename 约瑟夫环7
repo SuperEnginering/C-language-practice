@@ -1,0 +1,25 @@
+#include<stdio.h>
+int jos(int n);
+int main()
+{
+    int n,s,t;
+    scanf("%d",&t);
+    while(t--)
+    {
+        scanf("%d",&n);
+        s = jos(n);
+        printf("%d ", s);
+    }
+    return 0;
+}
+
+int jos(int n)
+{
+	int h=0;
+	int i;
+	for(i=2;i<=n;i++)
+	{
+		h=(h+7)%i;
+	}
+	return h+1;
+}
