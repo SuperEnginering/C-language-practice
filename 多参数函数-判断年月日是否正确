@@ -1,0 +1,67 @@
+#include<stdio.h>
+
+#include<math.h>
+
+int happy(int year, int month, int day);
+
+int main()
+{
+    char ch;
+    int year, month, day;
+	while (scanf("%d%c%d%c%d", &year, &ch, &month, &ch, &day) != EOF)
+	{	
+		printf("%d ", happy(year, month, day));
+    }
+	return 0;
+}
+
+int happy(int year, int month, int day)
+{
+	int isPrime;// 判断是否是瑞年 
+	if((year%4==0 && year%100!=0 )|| year%400==0)
+	{
+		isPrime=1;
+	}
+	else isPrime=0;
+				//二月单独拿出来 
+	if(isPrime==1&&month==2)
+	{
+		if(day>29||day<1) return -2;
+		else return 1;
+	}
+	else if( isPrime==0&&month==2 )
+	{
+		if(day>28||day<1) return -2;
+		else return 1;
+	}
+	
+		switch(month)
+		{
+			case 1:
+			case 3:
+			case 5:
+			case 7:
+			case 8:
+			case 10:
+			case 12:
+			{
+				if(day<1||day>31) return -2;
+				else return 1;	
+				break;
+			}
+//			case 2:
+			case 4:
+			case 6:
+			case 9:
+			case 11:
+			{
+				if(day<1||day>30) return -2;
+				else return 1;	
+				break;
+			}
+			
+			default:
+				return -1;	
+		}
+
+}
