@@ -1,0 +1,51 @@
+#include<stdio.h>
+#include<string.h> 
+#include<math.h>
+
+int main()
+{
+	
+	int N;	
+	while (scanf("%d",&N),N!=0)
+	{
+		int arr[N][N];
+		//input
+		int i,j;
+		for(i=0;i<N;i++)
+		{
+			for(j=0;j<N;j++)
+			{
+				scanf("%d",&arr[i][j]);
+			}
+		}
+		int m;
+		for(i=0;i<N;i++)
+		{
+			for(m=0;m<N;m++)
+			{
+				for(j=1;j<N;j++)
+				if(arr[i][j-1]>arr[i][j ])
+				{
+					int temp;
+					temp=arr[i][j];
+					arr[i][j]=arr[i][j-1];
+					arr[i][j-1]=temp;
+				}
+			}
+		}
+		
+		
+		
+		//output
+		for(i=0;i<N;i++)
+		{
+			for(j=0;j<N;j++)
+			{
+				if(j==0) printf("%d",arr[i][j]);
+				else printf(" %d",arr[i][j]);
+			}
+			printf("\n");
+		}
+	}
+	return 0;
+}
