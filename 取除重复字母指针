@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<string.h> 
+#include<math.h>
+
+char str[10005];
+//char out[10005]={0};
+int main()
+{
+	
+	while (gets(str)!='\0')
+	{
+//		I wwantt apple.
+
+//		getchar();
+		char* start=str;
+		//printf("start=%c\n",*start);
+		char* end=start+1;
+		//printf("end=%c\n",*end);
+		//getchar();strcmp(start,end)==0
+		int len=strlen(str);
+		//判断是否相同 
+		while(*start!='\0')
+		{
+			if(*start==*end)
+			{
+				end++;
+			}
+			else//if not same
+			{
+				printf("%c",*start);
+				start=end++;
+			}
+		}
+		 printf("\n");		
+	}
+	return 0;
+}
+
