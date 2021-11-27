@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<string.h> 
+#include<math.h>
+#define N 3
+int main()
+{
+	int arr[N][N]; 
+	
+	while (scanf("%d",&arr[0][0])!=EOF)
+	{
+		//input
+		int i,j;
+		for(i=0;i<N;i++)
+		{
+			for(j=0;j<N;j++)
+			{
+				if(i==0&&j==0) continue;
+				scanf("%d",&arr[i][j]);
+			}
+		}
+		
+		for(i=0;i<N;i++)
+		{
+			for(j=0;j<N;j++)
+			{
+				if(j==0)
+				printf("%d",arr[j][i]);
+				else 
+				printf(" %d",arr[j][i]);
+			}
+			printf("\n");
+		}
+		
+		printf("\n");
+	}
+	return 0;
+}
