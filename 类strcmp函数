@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<string.h> 
+#include<math.h>
+int stremp(char *p1,char *p2);
+int main()
+{
+	char s1[103];
+	char s2[103];
+	while (scanf("%s%s",s1,s2)!=EOF)
+	{
+		char* p1=s1;
+		char* p2=s2;
+		printf("%d\n",stremp(p1,p2));
+		
+	}
+	return 0;
+}
+
+int stremp(char *p1,char *p2)
+{
+	while(*p1&&*p2)
+	{
+		if(*p1==*p2)
+		{
+			p1++;
+			p2++;
+		}
+		else
+		{
+			return *p1-*p2;
+		}
+		if((*p1=='\0')||(*p2=='0'))
+		{
+			return 0;
+		}
+	}
+	
+}
