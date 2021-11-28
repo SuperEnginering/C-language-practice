@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<string.h> 
+#include<math.h>
+
+int main()
+{
+	int T;
+	scanf("%d",&T);
+	while(T--)
+	{
+		int n=0,dalta=0;
+		scanf("%d%d",&n,&dalta);
+		int year=dalta+n;
+		if(year>0)
+		{
+			year=year;
+		}
+		else 
+		{
+			year=-(year)+1;
+		}
+		if(year%4==0&&year%100!=0||year%400==0)
+		printf("29\n");
+		else
+		printf("28\n");
+	}
+	return 0;
+}
