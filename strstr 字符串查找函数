@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<string.h> 
+#include<math.h>
+
+int main()
+{
+	char str[100];
+	scanf("%s",str);
+	char* l=".";
+	char* W=".doc";
+	char* P=".ppt";
+	char* E=".xls";
+	
+	char* ll=strstr(str,l);
+	
+	if(strcmp(W,ll)==0)
+	printf("Word\n");
+	
+	else if(strcmp(P,ll)==0)
+	printf("PowerPoint\n");
+	
+	else if(strcmp(E,ll)==0)
+	printf("Excel\n");
+	return 0;
+}
