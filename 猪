@@ -1,0 +1,18 @@
+#include<stdio.h>
+#include<string.h> 
+#include<math.h>
+
+int main()
+{
+	printf("  (\\____/)\n"); 
+	printf("  / @__@ \\\n"); 
+	printf(" (  (oo)  )\n");
+	printf("  `-.~~.-'\n");
+	printf("   /    \\\n");
+	printf(" @/      \\_\n");
+	printf("(/ /    \\ \\)\n");
+	printf(" WW`----'WW\n");
+ 
+	
+	return 0;
+}
