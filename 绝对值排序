@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+	
+int arr[10005];
+int main()
+{ 
+	int N;
+	while(scanf("%d",&N)!=EOF) 
+	{
+		int i;
+		for(i=0;i<N;i++)
+		{
+			scanf("%d",&arr[i]);
+			
+				
+		}
+		int j;
+		for(i=0;i<N-1;i++)
+		{
+			for(j=0;j<N-i-1;j++)
+			{
+				if(abs(arr[j])>abs(arr[j+1]))
+				{
+					int t=arr[j];
+					arr[j]=arr[j+1];
+					arr[j+1]=t;
+				}
+			}
+		}
+		
+		
+		for(i=0;i<N;i++)
+		{
+		
+//			if(i==0) 
+			printf("%d ",arr[i]);
+//			else
+//			printf(" %d",arr[i]);
+		}
+		printf("\n\n");
+	}
+    return 0;
+}
+
+
