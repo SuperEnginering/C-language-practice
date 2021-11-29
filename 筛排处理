@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<string.h> 
+#include<stdlib.h>
+
+//数组降序 
+int cmpfunc (const void * a, const void * b)
+{
+   return (*(int *)a - *(int *)b );
+}	
+
+int main()
+{
+	int N;
+	while( scanf("%d",&N),N!=0 )
+	{
+			int arr[N];
+			int i;
+			for(i=0;i<N;i++)
+			{
+				scanf("%d",&arr[i]);
+			}
+			
+			qsort(arr,N,sizeof(arr[0]),cmpfunc);	
+			//再找出重复的数字
+			//用指针
+			int* start=&arr[0];
+			int* end=&arr[1];
+			int arr2[N];
+			int flag=N;
+			int j;
+			for(j=0;*end!='\0';)
+			{
+				if(*start==*end)
+				{
+					end++;
+					flag--;
+				}
+				else//if not same
+				{
+					arr2[j++]=*start;		
+					//printf("%d ",*start);
+					start=end++;
+				}
+			}
+			printf("%d\n",flag);
+			for(i=0;i<flag;i++)
+			{
+				
+				printf("%d ",arr2[i]);
+			}
+			printf("\n\n");		
+	} 
+	return 0;
+}
+
