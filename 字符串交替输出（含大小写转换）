@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+char s1[30]; 
+char s2[30];
+int min(int a,int b)
+{
+	return a<b?a:b;
+}
+int main()
+{ 
+    while(scanf("%s %s",&s1,&s2)!=EOF)
+    {
+    	int i,j;
+    	int len=min(strlen(s1),strlen(s2));
+    	for(i=0,j=0;i<len;i++,j++)
+    	{
+    		if(i!=0&&( 65<=s1[i]&&s1[i]<=90 )) 
+    		{
+    			s1[i]+=32;
+			}
+			if( 65<=s2[j]&&s2[j]<=90 )
+			{
+				s2[j]+=32;
+			}
+    		printf("%c%c",s1[i],s2[j]);
+		}
+    	
+    	printf("\n");
+    }
+    return 0;
+}
+
+
