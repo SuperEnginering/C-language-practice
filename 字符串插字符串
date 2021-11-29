@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+char s1[100001];//插 
+char s2[100001];//被插
+int main()
+{
+    int N; 
+    while(scanf("%s %s %d",&s1,&s2,&N)!=EOF)
+    {
+    	int i;
+    	for(i=0;i<N;i++)
+    	{
+    		printf("%c",s2[i]);
+		}
+    	int len1=strlen(s1);
+    	for(i=0;i<len1;i++)
+    	{
+    		printf("%c",s1[i]);
+		}
+		int len2=strlen(s2);
+    	for(i=N;i<len2;i++)
+    	{
+    		printf("%c",s2[i]);
+		}
+    	printf("\n");
+    }
+    return 0;
+}
+
+
