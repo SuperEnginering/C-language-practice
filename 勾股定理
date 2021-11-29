@@ -1,0 +1,31 @@
+#include<stdio.h>
+
+void huan(long long int* a,long long int* b)
+{
+	long long int tep=*a;
+	*a=*b;
+	*b=tep;
+}
+
+int main()
+{
+    long long int a,b,c;
+    while(scanf("%lld %lld %lld",&a,&b,&c),a!=0,b!=0,c!=0)
+    {
+    	
+    	if(b>a) huan(&a,&b);
+    	if(c>a) huan(&a,&c);
+    	if(a*a==(b*b+c*c))
+    	{
+    		printf("right\n");
+		}
+		else
+		{
+			printf("wrong\n");
+		}
+    	 
+    }
+    return 0;
+}
+
+
