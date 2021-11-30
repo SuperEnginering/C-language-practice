@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+//	6641
+
+int main()
+{ 
+	int arr[100][100];
+	int N;		
+	arr[0][0]=1; 
+	while(scanf("%d",&N)!=EOF) 
+	{
+		int i=0,j=0;
+		
+		for(i=0;i<N;i++)
+		{
+			int jia=i+1;
+			for(j=0;jia<=N;j++)
+			{
+				//printf("sada");
+				if(i==0)
+				{
+					arr[i][j+1]=arr[i][j]+(++jia);
+//					jia++;
+				}
+				else
+				{
+					if(j==0)
+					arr[i][j]=arr[0][i-1]+1;
+					else
+					{
+						arr[i][j]=arr[i][j-1]+(++jia);
+//						jia++;
+					}
+					
+				}
+			}
+				
+			}
+			
+			
+		//output
+		for(i=0;i<N;i++)
+		{
+			for(j=0;j<N-i;j++)
+			{
+				if(j==0) printf("%d",arr[i][j]);
+				else printf(" %d",arr[i][j]);	
+			}
+			printf("\n");	
+		}	
+	}
+	
+    return 0;
+}
+
+
