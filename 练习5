@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+
+
+int main()
+{ 
+	int n;
+	while(scanf("%d",&n)!=EOF)
+	{
+		int arr[n];
+		int i;
+		double sum=0;
+		for(i=0;i<n;i++)
+		{
+			scanf("%d",&arr[i]);	
+			sum+=arr[i];
+		}
+		printf("%.2f\n",sum/n);
+		
+	}
+    return 0;
+}
+
+
