@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+//用联合来表示成绩：
+union score {
+    char rank[5];    /* 用等级表示成绩 */
+    int mark;        /* 用分数表示成绩 */ 
+}; 
+//用结构来表示成绩信息：
+typedef struct {
+    char flag;        /* 表示用哪种方式记录成绩 */
+    union score s;    /* 成绩 */
+}stu;
+
+int main()
+{
+	int N;
+	scanf("%d",&N);
+	stu arr[N];
+	int i;
+	for(i=0;i<N;i++)
+	{
+		scanf("%s",&arr[i].flag);
+		if( arr[i].flag=='N' ) /* 用分数表示成绩 */ 
+		{
+			scanf("%d",&arr[i].s.mark);	
+			//printf("nnnnnnnnnnnnnnnn\n");
+		}
+		else
+		{
+			scanf("%s",arr[i].s.rank);	
+			//printf("ccccccccccccc\n");
+		}
+
+	}	
+	
+	int flag=0;
+	int sum=0;
+	for(i=0;i<N;i++)
+	{
+		if(arr[i].flag=='N' )
+		{
+			sum+=arr[i].s.mark;	
+		}else
+		{	
+			flag++;
+		}
+		}	
+	//	printf("%s\n",arr[i].flag);
+	int n=N-flag;
+	if(n==0) printf("%d %d\n",flag,n);
+	else printf("%d %d\n",flag,sum/n);		
+	
+	
+	return 0;
+} 
