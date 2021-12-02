@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+typedef struct
+{
+	char name[11];
+	int  birth;	
+	char tele[18];	 
+}p;
+
+int cmp(const void* a,const void* b)
+{
+	
+	return  (*(p *)a).birth > (*(p *)b).birth  ? 1:-1;
+}
+
+int main()
+{
+	int N;
+	scanf("%d",&N);
+	p arr[N];
+	int flag=0;
+	int i;
+	for(i=0;i<N;i++)
+	{
+		scanf("%s %d %s",arr[i].name , &arr[i].birth , arr[i].tele );
+	}	
+	qsort(arr,N,sizeof(arr[0]),cmp);
+	
+	for(i=0;i<N;i++)
+	{
+		printf("%s %d %s\n",arr[i].name , arr[i].birth , arr[i].tele );		
+	}	
+	
+	return 0;
+} 
