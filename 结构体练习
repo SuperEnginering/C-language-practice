@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <string.h>
+
+//给定N个学生的基本信息，包括学号（由5个数字组成的字符串）、姓名（长度小于10的不包含空白字符的非空字符串）
+//和3门课程的成绩（[0,100]区间内的整数），要求输出总分最高学生的姓名、学号和总分。学生基本信息用结构表示。
+//【输入】
+//一行中给出正整数N（≤10）。随后N行，每行给出一位学生的信息，格式为"学号 姓名 成绩1 成绩2 成绩3"，其间以空格分隔。
+//【输出】
+//一行中输出总分最高学生的姓名、学号和总分，其间以空格间隔。题目保证这样的学生是唯一的。
+//【输入示例】
+//5
+//00001 huanglan 78 83 75
+//00002 wanghai 76 80 77
+//00003 shenqiang 87 83 76
+//10001 zhangfeng 92 88 78
+//21987 zhangmeng 80 82 75
+//【输出示例】
+//10001 zhangfeng 258
+
+typedef struct
+{
+	char id[6];
+	char name[11];	
+	int c1;
+	int c2;
+	int c3;
+
+	 
+}stu;
+int main()
+{
+	int N;int i;
+	scanf("%d",&N);
+	stu arr[N];
+	int flag=0;
+	for(i=0;i<N;i++)
+	{
+		scanf("%s %s %d %d %d",arr[i].id ,arr[i].name ,&arr[i].c1 ,&arr[i].c2	,&arr[i].c3);
+	}	
+	
+	
+		int max=arr[0].c1 +arr[0].c2 +arr[0].c3;
+	for(i=1;i<N;i++)
+	{
+		if(max<(arr[i].c1 +arr[i].c2 +arr[i].c3))
+		{
+			max=arr[i].c1 +arr[i].c2 +arr[i].c3;
+			flag=i;
+		}		
+	}	
+	
+		
+	
+	printf("%s %s %d\n",arr[flag].id ,arr[flag].name ,max);
+	return 0;
+} 
