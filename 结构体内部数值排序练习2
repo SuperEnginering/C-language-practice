@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+typedef struct {
+    int id;       
+    float deep;   
+}ill;
+int cmp(const void* a,const void* b)
+{
+	
+	return  (*(ill *)b).deep> (*(ill *)a).deep ? 1:-1;
+}
+int main()
+{
+	int m;
+	float a;
+	scanf("%d%f",&m,&a);
+	ill arr[m];
+	int i;
+	for(i=0;i<m;i++)
+	{
+		scanf("%d %f",&arr[i].id,&arr[i].deep);
+	}	
+	int flag=0 ;
+	qsort(arr,m,sizeof(arr[0]),cmp);	
+	for(i=0;i<m;i++)
+	{
+		if(arr[i].deep>a) 
+		{
+			printf("%03d %.1f\n",arr[i].id,arr[i].deep);
+			flag++;
+		}
+	}
+	if(flag==0) printf("None.\n")	;
+	//	printf("%s\n",arr[i].flag);	
+	return 0;
+} 
