@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#define M 30
+
+int main()
+{
+	int N;
+	scanf("%d",&N);
+	char tele[N][M];
+	int i=0;
+	for(i=0;i<N;i++)
+	{
+		scanf("%s",tele[i]);
+	}
+	//judge
+	int flag=0;
+	int len=strlen(tele[0]);
+	int j,l;
+	for(i=0;i<len;i++)//确定哪一列 
+	{
+		for(j=0;j<N-1;j++)//该列的第几个元素比较 
+		{
+			if(tele[j][i] != tele[j+1][i] )  
+			{
+				break;
+			}
+		}
+			
+		if(j!=N-1) break;
+	}
+	
+	printf("%d\n",i);
+	
+//	for(i=0;i<N;i++)
+//	{
+//		printf("%s\n",tele[i]);
+//	}
+	return 0;
+} 
