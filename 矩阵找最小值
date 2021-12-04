@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#define M 4
+
+int main()
+{
+	int a[M][M];
+	int i,j;
+	for(i=0;i<M;i++)
+	{
+		for(j=0;j<M;j++)
+		{
+			scanf("%d",&a[i][j]);	
+		}
+	}
+	int min=a[0][0];
+	int hang=0;
+	int lie=0;
+	for(i=0;i<M;i++)
+	{
+		for(j=0;j<M;j++)
+		{
+			if(min>a[i][j])
+			{
+				min=a[i][j];
+				hang=i;
+				lie=j;
+					
+			}
+				
+		}
+	}
+	
+	printf("%d %d\n",hang,lie);
+
+	return 0;
+} 
