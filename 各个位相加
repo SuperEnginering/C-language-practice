@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main()
+{
+	long long int arr[4];
+	int i;
+	for(i=0;i<4;i++)
+	{	
+		scanf("%lld",&arr[i]);
+	}
+	int number=0;
+	
+	for(i=0;i<4;i++)
+	{
+		int sum=0;
+		while(arr[i]!=0)
+		{
+			sum+=arr[i]%10;
+			arr[i]/=10;
+			if(sum>=16||sum==6) 
+			{
+				number++;
+				break;
+			}
+		}
+	}
+	
+	switch(number)
+	{
+		case 1:
+			{
+				printf("Oh dear!!\n");
+				break;
+			}
+		case 2:
+			{
+				printf("BaoBao is good!!\n");
+				break;
+			}
+		case 3:
+			{
+				printf("Bao Bao is a SupEr man///!\n");
+				break;
+			}
+		case 4:
+			{
+				printf("Oh my God!!!!!!!!!!!!!!!!!!!!!\n");
+				break;
+			}
+		default:
+			{
+				printf("Bao Bao is so Zhai......\n");
+				break;
+			}				
+	}
+	
+
+	return 0;
+} 
