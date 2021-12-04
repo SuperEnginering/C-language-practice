@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main()
+{
+	int T;
+	scanf("%d",&T);
+	while(T--)
+	{
+		int year,a;
+		scanf("%d %d",&year,&a);
+		//调整年份
+		int qian,hou;
+		if(year+a>9999)
+		{
+			qian=year;
+			hou=9999-((year+a)-9999);
+		}
+		else
+		{
+			qian=year;
+			hou =year+a;
+		}
+		
+		
+		//output
+		int i,flag=0;
+		if(qian>=hou)
+		{
+			 int temp=qian;
+			 qian=hou;
+			 hou=temp;		
+		}
+		for(i=qian;i<=hou;i++)
+		{
+			if((i%4==0&&i%100!=0)||(i%400==0))
+			{
+				flag++;	
+			}
+		}	
+//		else
+//		{
+//			for(i=hou;i<=qian;i++)
+//			{
+//				if((i%4==0&&i%100!=0)||(i%400==0))
+//				{
+//					flag++;	
+//				}
+//			}
+//		}
+		
+		printf("%d\n",flag);
+
+	}
+	return 0; 
+} 
