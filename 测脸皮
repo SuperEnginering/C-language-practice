@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#define M 5
+
+int main()
+{
+	int a[M][M];
+	int i,j;
+	for(i=0;i<M;i++)
+	{
+		for(j=0;j<M;j++)
+		{
+			scanf("%d",&a[i][j]);	
+		}
+	}
+	int h=50;
+	for(i=0;i<M;i++)
+	{
+		for(j=0;j<M;j++)
+		{
+			if(i==j&&i!=2)
+			h+=a[i][j];
+			else if(i+j==4) h+=a[i][j]; 	
+		}
+	}
+	printf("%d\n",h);
+	if(h>100)
+	printf("wo de tian!\n");
+	else printf("make monkey!\n");
+	return 0;
+} 
