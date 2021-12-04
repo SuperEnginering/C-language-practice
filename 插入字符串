@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#define M 4
+int main()
+{
+	char arr[M][M];
+	int m,n;
+	for(m=0;m<M;m++)
+	{
+		for(n=0;n<M;n++)
+		{
+			arr[m][n]='0';
+		}
+	}
+	int N;
+	scanf("%d",&N);
+	int i;
+	for(i=0;i<N;i++)
+	{
+		int x,y;
+		char z;
+		scanf("%d %d %c",&x,&y,&z); 
+		arr[x][y]=z;
+	}
+	for(m=0;m<M;m++)
+	{
+		for(n=0;n<M;n++)
+		{
+			if(n==0)
+			printf("%c",arr[m][n]);
+			else
+			printf(" %c",arr[m][n]);
+			
+		}
+		printf("\n");
+	}
+	return 0;
+} 
