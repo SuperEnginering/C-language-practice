@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+int n,m;
+char str[500][500];
+int main()
+{
+	int T;
+	scanf("%d",&T);
+	while(T--)
+	{
+
+		
+		scanf("%d%d",&n,&m);
+		getchar();
+
+		int i;
+		for(i=0;i<n;i++)
+		{
+			gets(str[i]);
+		} 
+		for(i=0;i<m;i++)
+		{
+			char mod;
+			int a,b;
+			scanf("%c%d%d",&mod,&a,&b);
+			getchar();
+			a--,b--;
+//			int len=strlen(str[b]);		
+			if(mod==67)//strcpy
+			{
+				strcpy(str[a],str[b]);
+//				printf("324\n");
+			}
+			else if(mod==65)//strcat
+			{
+				strcat(str[a],str[b]);
+//				printf("123\n");
+			}
+			
+		}
+		printf("%s\n",str[0]);
+	}
+	return 0;
+} 
