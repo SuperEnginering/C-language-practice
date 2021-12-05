@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#define M 4
+int main()
+{
+	int c[10],l[10];
+	int i,sumc=0,suml=0;
+	for(i=0;i<10;i++)
+	{
+		scanf("%d",&c[i]);
+		sumc+=c[i];	
+	} 
+	for(i=0;i<10;i++)
+	{
+		scanf("%d",&l[i]);
+		suml+=l[i];		
+	} 
+	if(sumc>=suml) printf("why am i so diao?\n");
+	else printf("cjc died!\n");
+	
+	return 0;
+} 
