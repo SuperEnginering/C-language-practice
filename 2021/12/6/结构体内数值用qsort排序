@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+typedef struct
+{
+	int number;
+	char name[21];
+}girl;
+
+int cmp(const void* a,const void* b)
+{
+	return (*(girl*)a).number > (*(girl*)b).number ? -1:1;
+}
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	while(t--)
+	{
+		int n;
+		scanf("%d",&n);
+		getchar();
+		girl lao[n];	
+		int i;
+		for(i=0;i<n;i++)
+		{
+			scanf("%s %d",&lao[i].name,&lao[i].number);
+		}
+		qsort(lao,n,sizeof(lao[0]),cmp);
+		
+		for(i=0;i<n;i++)
+		{
+			printf("%s\n",lao[i].name);
+		}
+	}	
+	return 0;
+} 
