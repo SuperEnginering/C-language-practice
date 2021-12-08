@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+typedef struct
+{
+	int id;
+	char name[16];
+	int score;
+}stu;
+
+
+int main()
+{
+	int x,y;
+	scanf("%d%d",&x,&y);
+	getchar();
+	int i;
+	stu student[20];
+	for(i=0;i<x;i++)
+	{
+		scanf("%d %s %d",&student[i].id ,&student[i].name ,&student[i].score );		
+	}
+	int check[20];
+	for(i=0;i<y;i++)
+	{
+		scanf("%d",&check[i]);
+		int j;
+		for(j=0;j<x;j++)
+		{
+		     //compare
+			if(student[j].id ==check[i])
+			{
+				if(student[j].score >=90 && student[j].score<=100)
+				printf("A\n");
+				else if(student[j].score >=80 && student[j].score< 90)
+				printf("B\n"); 
+				else if(student[j].score >=70 && student[j].score< 80)
+				printf("C\n");
+				else if(student[j].score >=60 && student[j].score< 70)
+				printf("OK\n");
+				else 
+				printf("ARE YOU PIG?\n"); 	
+			}	
+		}	
+	}	
+	return 0;
+} 
+
+
+
