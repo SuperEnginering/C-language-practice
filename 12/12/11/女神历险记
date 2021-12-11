@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+typedef struct
+{
+	char chuang[21];
+	int shu;
+}suoyinhao;
+char result[20000][21];
+int main(){
+	suoyinhao suo[10000];
+	int t,n;
+	scanf("%d%d",&t,&n);
+	int i,j;
+	int suo1=0;
+	int suo2=0;
+	for(i=0;i<t;i++)
+	{
+		scanf("%d",&suo[i].shu );
+		scanf("%s",&suo[i].chuang);
+	}
+	int flag=0;
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&suo2);
+		for(j=0;j<t;j++)
+		{
+			if(suo2==suo[j].shu)
+			{
+				//strcpy(result[flag],suo[j].chuang);
+				memcpy(result[flag], suo[j].chuang, sizeof(result[flag]));
+				flag++;
+			}
+			
+		}
+	}
+
+	for(i=0;i<n;i++)
+	{
+		if(i==0) printf("%s",result[i]);
+		else printf(" %s",result[i]);
+	}
+	return 0;
+
+}
