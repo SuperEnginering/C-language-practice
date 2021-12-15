@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#define N 10 
+int main()
+{
+	int arr[N];
+	int i,j;
+	for(i=0;i<N;i++)
+	scanf("%d",&arr[i]);
+	
+	int len[30];
+	int sum=1;
+	for(i=0;i<N;i++)//代表从第i天开始的天数
+	{
+		len[i]=1;
+		for(j=0;j<i;j++)
+		{
+			if( arr[i] > arr[j]&&len[j]+1>len[i] )
+			{
+				
+				len[i]=len[j]+1;
+			}
+		}
+		sum=(sum>len[i])? sum:len[i];
+		
+	}
+	printf("%d\n",sum);		
+	return 0;
+}
