@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct node {
+    int num;
+    struct node *next;
+};
+struct node *createList(void) 
+{
+	struct node *head=NULL,*tail,*now;
+	int num;
+	while(scanf("%d",&num),num!=0)
+	{
+		now=(struct node*)malloc(sizeof(struct node));
+		now->num =num;
+		now->next=NULL;
+		if(head==NULL)
+			head=now;	
+		else
+			tail->next=now;
+		tail=now;
+	}
+	return head; 
+}
+int main(void) {
+    struct node *head = NULL, *p;
+    head = createList();
+    for(p = head; p != NULL; p = p->next)
+        printf("%d ", p->num);
+    printf("\n");
+    return 0;
+}
