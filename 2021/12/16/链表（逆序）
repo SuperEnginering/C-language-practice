@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct node {
+    int num;
+    struct node *next;
+};
+struct node *createReverseList(void) {
+    struct node *head=NULL,*tail,*now,*pre;
+    int num;
+	while(scanf("%d",&num),num!=0)
+	{
+		now=(struct node*)malloc(sizeof(struct node));
+		now->num =num;
+		now->next =NULL; 
+		pre=tail=head;
+		if(head==NULL)
+			head=now;
+		else 
+		{	
+			now->next =head;
+			head=now;		
+		} 
+
+	}
+	return head;
+}
+
+
+int main(void) {
+    struct node *head = NULL, *p;
+    head = createReverseList();
+    for(p = head; p != NULL; p = p->next)
+        printf("%d ", p->num);
+    printf("\n");
+    return 0;
+}
