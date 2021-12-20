@@ -1,0 +1,99 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct node {
+    int id;
+    struct node *next;
+};
+//创建链表 
+struct node *createList(int n,int t) 
+{
+	struct node *head=NULL,*tail,*now;		
+	tail=now=head; 
+	int num=0;
+	while(n--)
+	{
+		scanf("%d",&num);
+		now=(struct node*)malloc(sizeof(struct node));
+		now->id=num;
+		now->next=NULL;
+	
+		if(head==NULL)
+			head=now;	
+		else
+		{
+			tail->next=now;	
+		}
+		tail=now;
+		
+	}
+	//换 
+	struct node *pre,*huan,*zhao;	
+	pre=zhao=head;
+	int i,x,y;
+	for(i=0;i<t;i++)
+	{
+		int flag=1;
+		scanf("%d %d",&x,&y);
+		huan=(struct node*)malloc(sizeof(struct node));
+		huan->id = x;
+		huan->next = NULL;
+		
+		//遍历
+		while(flag) 
+		{
+			//如果不等，那就移动 
+			while(y!=zhao->id)
+			{
+//				printf("有移动\n");
+				if(zhao==NULL) break;
+				pre=zhao;
+				zhao=zhao->next;
+			}
+//			printf("过了移动\n");
+			//如果相等 
+			if(y==zhao->id) 
+			{
+//				printf("有插\n");
+				if(zhao==head)
+				{
+					huan->next =head;
+					head=huan;
+				}	
+				else
+				{
+					pre->next =huan;
+					huan->next =zhao; 
+				}
+				flag=0;
+				if(i!=t-1)
+				pre=zhao=head;
+			}
+		}
+//			struct node *p;
+//			for(p = head; p != NULL; p = p->next)
+//		    {
+//		//    	printf("have come in\n") ;
+//			    printf("%d ", p->id);
+//			}
+//			printf("\n");
+		}
+	return head; 
+}
+
+
+int main(void) {
+    struct node *head = NULL, *p;
+    int n,t;
+	scanf("%d%d",&n,&t); 
+	//创建链表 
+	head = createList(n,t);
+//	printf("ad");
+	//输出链表 
+    for(p = head; p != NULL; p = p->next)
+    {
+//    	printf("have come in\n") ;
+	    printf("%d ", p->id);
+	}
+	printf("\n");
+    return 0;
+}
