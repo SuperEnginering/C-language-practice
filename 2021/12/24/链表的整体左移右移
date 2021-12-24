@@ -1,0 +1,53 @@
+/* 请在下面编写sum函数，计算并返回所有结点中整数的和 */
+int sum(struct node *head) {
+    //遍历求和
+    int sum=0;
+    
+    struct node *now=NULL;
+	now=head;
+	sum+=head->num;
+    while(now->next !=NULL)
+    {
+//		printf("%d\n",now->num);
+    	now=now->next;
+		sum+=now->num;	
+	}
+    return sum;
+	  
+}
+/* 请在下面编写cyclicShift函数，实现链表的循环移位 */
+struct node *cyclicShift(struct node *head, enum DIR dir) {
+    struct node *pre=NULL,*tail=NULL; 
+    tail=pre=head;
+	if(dir)//右移
+	{
+		//printf("move\n");
+		//移动到最后
+		while(tail->next != NULL)
+		{
+			pre=tail;
+			tail=tail->next;	
+		}
+		//移到最后 
+		//换
+		tail->next = head;
+		pre->next =NULL;
+		head=tail;
+	}
+	else//左移 
+	{
+		//移动到最后
+		while(tail->next != NULL)
+		{
+			tail=tail->next;	
+		}
+		//移到最后 
+		//换
+		tail->next =head;
+		tail=head;
+		head=head->next ;
+		tail->next =NULL;
+	}  
+	
+	return head;
+}
