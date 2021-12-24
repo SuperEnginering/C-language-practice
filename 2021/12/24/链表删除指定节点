@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct node {
+    int num;    /* 存放整数 */
+    struct node *next;
+};
+
+/* 请在下面编写createList函数，建立单向整数链表 */
+struct node *createList(void) {
+   struct node* head=NULL,*tail,*now;
+   int num;
+   while(scanf("%d",&num),num!=0)
+   {
+   		now=(struct node*)malloc(sizeof(struct node));
+   		now->num =num;
+		now->next =NULL;
+		if(head==NULL)
+			head=now;
+		else
+			tail->next=now;
+		tail=now;		    
+   }
+   return head;
+}
+/* 请在下面编写deleteList函数，
+删除单向整数链表中指定整数值节点 */
+struct node *deleteList(struct node *head, int num) {
+	   struct node *tail,*pre=NULL;
+	   tail=head;
+	   while(tail->next!=NULL)
+	   {
+			//找到了，跳过
+			if(num==tail->num)
+		   {
+		   		if(pre)
+				{
+	   			pre->next =tail->next ;
+	   			free(tail);
+	   			tail=pre->next ;
+			   }
+			   else
+			   {
+				   head=tail->next ;
+				   free(tail);
+				   tail=head;	
+				   }
+		   }
+		   else
+		   {	
+		   	pre=tail;
+		   	tail=tail->next ;
+		   }
+			
+		}
+	return head;
+		 
+}
+
+/* 遍历输出单向整数链表 */
+void printList(struct node *head) {
+    struct node *p = head;
+    if(p != NULL) {
+        for(; p->next != NULL; p = p->next)
+            printf("%d ", p->num);
+        printf("%d\n", p->num);
+    }
+}
+int main(void) {
+    int num;
+    struct node *head = NULL;
+    head = createList();
+    scanf("%d", &num);
+    head = deleteList(head, num);
+    printList(head);
+    return 0;
+}
