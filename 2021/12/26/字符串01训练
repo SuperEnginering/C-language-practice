@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	getchar();
+	char str[1000];
+	int l=0;
+	int yi=0;
+	int i;
+	for(i=0;i<n;i++)
+	{
+		scanf("%c",&str[i]);
+		if(str[i]=='1') yi++;
+		if(str[i]=='0') l++;
+	}
+//	printf("%d\n",yi);
+//	printf("%d\n",l);
+	int h=abs(yi-l);
+	printf("%d\n",h);
+ 	return 0;
+}
