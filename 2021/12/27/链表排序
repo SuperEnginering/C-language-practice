@@ -1,0 +1,84 @@
+#include<stdio.h>
+#include <stdlib.h>
+struct node {
+    int num;
+    struct node *next;
+};
+/* 建立单向整数链表 */
+struct node *createList(void) {
+    struct node *head = NULL, *tail = NULL, *p = NULL;
+    int num;
+    unsigned int size = sizeof(struct node);
+    while(scanf("%d", &num),num != 0) {
+        p = malloc(size);
+        p->num = num;
+        p->next = NULL;
+        if(head == NULL) {
+            head = p;
+        }
+        else {
+            tail->next = p;
+        }
+        tail = p;
+    }
+    return head;
+}
+/* 遍历输出单向整数链表 */
+void printList(struct node *head) {
+    struct node *p = head;
+    if(p != NULL) {
+        for(; p->next != NULL; p = p->next)
+            printf("%d ", p->num);
+       printf("%d\n", p->num);
+    }
+}
+
+/*请在下面编写sortList函数*/
+struct node *sortList(struct node *head) {
+	struct node *chang,*tail,*pre;
+	if(head==NULL||head->next ==NULL) return head;
+	chang=head;
+	//用链表排序，和冒泡法排序一个道理
+	
+	int len=0;
+	while(chang->next!=NULL)
+	{
+		len++;
+		chang=chang->next;
+	} 
+	len++;
+	struct node* temp;
+	temp=(struct node*)malloc(sizeof(struct node));
+	temp->next =NULL;
+	temp->num=0;
+	
+//	printf("%d\n",len);
+	int i,j;
+	for(i=0;i<len-1;i++)
+	{
+		pre=head;
+		tail=head->next;
+		for(j=0;j<len-1-i;j++)
+		{
+			if(pre->num < tail->num)
+			{
+				temp->num=pre->num;
+				pre->num =tail->num;
+				tail->num=temp->num;	
+			}
+			pre=pre->next;
+			tail=tail->next;
+		}
+	}
+	return head;
+}
+
+
+
+int main(void) {
+    struct node *head = NULL;
+    head = createList();
+    head = sortList(head);
+    printList(head);
+    return 0;
+}
