@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+typedef struct 
+{
+	int score;//分数
+	int p;//排名 
+	int number;//原顺序 
+}student;
+int cmp(student *a,student *b)
+{
+	return a->score < b->score ? 1:-1;
+}
+int cmp1(student *a,student *b)
+{
+	return a->number > b->number  ? 1:-1;
+}
+int main()
+{
+	int N;
+	scanf("%d",&N);
+	student stu[N];
+	int i;
+	for(i=0;i<N;i++)
+	{	
+		scanf("%d",&stu[i].score);
+		stu[i].number =i;
+	}
+	qsort(stu,N,sizeof(stu[0]),cmp);
+	for(i=0;i<N;i++)
+	{	
+		stu[i].p =i+1;
+	}
+	qsort(stu,N,sizeof(stu[0]),cmp1);
+	for(i=0;i<N;i++)
+	{	
+		if(i==0)
+			printf("%d",stu[i].p );
+		else
+			printf(" %d",stu[i].p );	
+	}
+	return 0;
+}
+ 
+
+
