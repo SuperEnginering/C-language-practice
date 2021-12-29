@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+typedef struct 
+{
+	char name[10];
+	double c1;
+	double c2;
+	double c3;
+	double av;
+	int number;
+}student;
+
+int cmp1(student *a, student *b)
+{
+	return a->c1 < b->c1 ? 1:-1;  
+}
+int cmp2(student *a, student *b)
+{
+	return a->c2 < b->c2 ? 1:-1;  
+}
+int cmp3(student *a, student *b)
+{
+	return a->c3 < b->c3 ? 1:-1;  
+}
+int cmpav(student *a, student *b)
+{
+	return a->av < b->av ? 1:-1;  
+}
+int cmpnumber(student *a, student *b)
+{
+	return b->number  < a->number ? 1:-1;  
+}
+int main()
+{
+	int N;
+	scanf("%d",&N);
+	student stu[N];
+	int i; 
+	for(i=0;i<N;i++)
+	{
+		scanf("%s %lf %lf %lf",stu[i].name,&stu[i].c1,&stu[i].c2,&stu[i].c3);
+		stu[i].av = 1.0*(stu[i].c1+stu[i].c2+stu[i].c3)/3.0; 
+//		stu[i].number=i;
+//		printf("平均分==============%.2f\n",stu[i].av );
+	}
+	//比较第一门课
+	qsort(stu,N,sizeof(stu[0]),cmp1);
+	printf("%s,%.2f,%.2f,%.2f\n",stu[0].name,stu[0].c1,stu[0].c2,stu[0].c3)	;
+	//第二门
+	qsort(stu,N,sizeof(stu[0]),cmp2);
+	printf("%s,%.2f,%.2f,%.2f\n",stu[0].name,stu[0].c1,stu[0].c2,stu[0].c3)	;
+	//第三门
+	qsort(stu,N,sizeof(stu[0]),cmp3);
+	printf("%s,%.2f,%.2f,%.2f\n",stu[0].name,stu[0].c1,stu[0].c2,stu[0].c3)	;
+	printf("\n");
+	
+	//其后n行按平均成绩从高到低输出学生信息
+	qsort(stu,N,sizeof(stu[0]),cmpav);
+	for(i=0;i<N;i++)
+	{
+		printf("%s,%.2f,%.2f,%.2f\n",stu[i].name,stu[i].c1,stu[i].c2,stu[i].c3);
+	}
+	printf("\n");
+//	qsort(stu,N,sizeof(stu[0]),cmpnumber);
+	//平均分高于80分的学生信息和其平均成绩
+	for(i=0;i<N;i++)
+	{
+	//	printf("number=========%d\n",stu[i].number);
+		if(stu[i].av > 80)
+		printf("%s,%.2f,%.2f,%.2f,%.2lf\n",stu[i].name,stu[i].c1,stu[i].c2,stu[i].c3,stu[i].av );
+	}
+	
+	
+//	//检查输入输出 
+//	for(i=0;i<N;i++)
+//	printf("%s %.2lf %.2lf %.2lf\n",stu[i].name,stu[i].c1,stu[i].c2,stu[i].c3);
+	return 0;
+}
+ 
+
+
