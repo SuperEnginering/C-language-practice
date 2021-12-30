@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct 
+{
+	int id;
+	char name[20];
+	int c1,c2,c3;
+	double av;
+	int sum;
+}student;
+int main(void)
+{
+	FILE *inpf,*outpf;
+	inpf=fopen("student.txt","w");
+//	outpf=fopen("ciphertext.txt","w");
+	int a;
+	scanf("%d",&a);
+	student stu[a];
+	int i;
+	for(i=0;i<a;i++)
+	{
+		scanf("%d %s %d %d %d",
+		&stu[i].id ,stu[i].name,&stu[i].c1 ,&stu[i].c2,&stu[i].c3 );
+		stu[i].av =1.0*(stu[i].c1+stu[i].c2+stu[i].c3)/3.0;	
+		stu[i].sum =stu[i].c1+stu[i].c2+stu[i].c3;
+	}
+	for(i=0;i<a;i++)
+	{
+		fprintf(inpf,"%d %s %d %d %d %d %.2f\n",
+		stu[i].id ,stu[i].name,stu[i].c1 ,stu[i].c2,stu[i].c3,stu[i].sum ,stu[i].av  );
+	}
+	
+	fclose(inpf);	
+//	fclose(outpf);
+	return 0;
+}
