@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+ 
+int main() {
+    int n,k;
+    int N;
+	scanf("%d",&N);
+    while(N--)
+    { 
+	 	scanf("%d %d",&k,&n);
+        if((n&k)==k)
+            printf("1\n");
+        else 
+            printf("0\n");
+    }
+    return 0;
+}
