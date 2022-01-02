@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include <string.h>
+int cmp(const void *za,const void *zb)
+{
+	int *a=(int *)za;
+	int *b=(int *)zb;
+	return *a-*b;
+}
+int main()
+{
+	FILE *fp;
+	fp=fopen("example.txt","w");
+	int arr[10];
+	int i;
+	for(i=0;i<10;i++)
+		scanf("%d",&arr[i]);
+	qsort(arr,10,sizeof(arr[0]),cmp);
+	for(i=0;i<10;i++)
+	{
+		if(i==0||i==6)
+			fprintf(fp,"%d",arr[i]);
+		else
+			fprintf(fp," %d",arr[i]);
+		if(i==5)
+			fprintf(fp,"\n");				
+	}	
+		
+	
+	fclose(fp);
+	return 0;	
+} 
