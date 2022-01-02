@@ -1,0 +1,93 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include <string.h>
+
+
+
+int main()
+{
+	FILE *infp;
+	infp=fopen("hours.txt","r+");
+	if(infp==NULL) exit(0);
+	int j=0,i=0;
+	int hang=0;
+	int temp[10];//行的的每一个成员储存在这里 
+	int hangsum[50];
+	int liesum[8];
+	for(i=0;i<50;i++)//初始化 
+	{
+		hangsum[i]=0;
+		liesum[i]=0;
+	}
+	int allsum=0;
+	char ss[100],*p;
+	while(!feof(infp)) //不是文件末尾 
+	{
+		fgets(ss,20,infp);
+		int ii=0;
+		p=strtok(ss," ");//p指向第一个单词 
+		while(p!=NULL)//不是行末尾 
+		{
+			temp[ii]=atol(p);//把字符串转换成浮点数
+			printf("temp[%d]=%d\n",ii,temp[ii]);
+			hangsum[j]+=temp[ii];//每行之和
+			printf("            hangsum[%d]=%d\n",ii,hangsum[j]);	
+			liesum[ii]+=temp[ii];//每列之和 
+			allsum+=temp[ii];
+			p=strtok(NULL," ");	//p指向下一个单词 
+			ii++;
+		}
+		j++;
+	}
+	//output
+	for(i=0;i<j;i++) 
+	{
+		printf("Total hours = %d\n",hangsum[i]);
+	}
+		printf("\n");
+	for(i=0;i<7;i++) 
+	{
+		switch(i)
+		{
+			case 0:
+				{
+					printf("Mon hours = %d\n",liesum[i]);
+					break;
+				}
+			case 1:
+				{
+					printf("Tue hours = %d\n",liesum[i]);
+					break;
+				}
+			case 2:
+				{
+					printf("Wed hours = %d\n",liesum[i]);
+					break;
+				}
+			case 3:
+				{
+					printf("Thu hours = %d\n",liesum[i]);
+					break;
+				}
+			case 4:
+				{
+					printf("Fri hours = %d\n",liesum[i]);
+					break;
+				}
+			case 5:
+				{
+					printf("Sat hours = %d\n",liesum[i]);
+					break;
+				}
+			case 6:
+				{
+					printf("Sun hours = %d\n",liesum[i]);
+					break;
+				}						
+		}
+		
+	}
+	printf("Total hours = %d\n",allsum);
+	fclose(infp);
+	return 0;	
+} 
