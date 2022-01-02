@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+typedef struct 
+{
+	double a;
+	double b;
+}list;//定义一个结构体，用来存放第一个区间内的数据
+//2 0 1 3.5 4
+//1 0.5 4
+int main()
+{
+	int N;
+	scanf("%d",&N);
+	list sz[100];
+	int i;
+	for(i=0;i<N;i++)
+		scanf("%lf %lf",&sz[i].a ,&sz[i].b);//存放第一个区间内的数据
+	//第二行
+	int M;
+	scanf("%d",&M);
+	//当两个区间长度不一样时,choose the min
+	int k;
+	if(N<=M)
+		k=M;
+	else
+		k=N;
+	double sum=0;
+	double x,y;
+	while(M--)
+	{
+		scanf("%lf %lf",&x,&y);//对第二个区间每队数据的输入
+		for(i=0;i<=k;i++)//judge
+		{
+			if(x>=sz[i].a&&y<=sz[i].b)//a x y b 
+				sum+=y-x;
+			if(x>sz[i].a&&y>sz[i].b&&x<sz[i].b)//a x b y
+				sum+=sz[i].b-x;
+			if(x<=sz[i].a&&y>=sz[i].a&&y<=sz[i].b)//x a y b
+				sum+=y-sz[i].a;
+			if(x<sz[i].a&&y>sz[i].b)//x a b y
+				sum+=sz[i].b-sz[i].a;
+		}
+	}
+	printf("%.3lf\n",sum);//按照格式输出
+    return 0;
+}
