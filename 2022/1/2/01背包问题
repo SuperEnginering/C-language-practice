@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int i,j;
+int w[1000]={0};
+int v[1000]={0};
+int f[1001][2001];
+
+int main(void)
+{
+
+    int nn,n,t,j=0,l=0;
+    while(scanf("%d %d",&nn,&t)!=EOF)
+    {
+        if(nn==0&&t==0) break;
+        j=1;
+        l=1;
+        while(nn--)
+        {
+            scanf("%d",&n);
+            for(i=0;i<n;++i)
+            {
+                scanf("%d",&v[j]);//v[j]代表ji 
+                j++;
+            }
+            for(i=0;i<n;++i)
+            {
+                scanf("%d",&w[l]);//w[i]代表背包容量
+                l++;
+            }
+        }
+        for(i=1;i<j;++i)
+        {
+            for(k=1;k<=t;++k)//记f(i,k): 当背包容量为i,现有k件物品可以偷
+            {
+                if(w[i]>k) 
+                    f[i][k] = f[i-1][k];
+                else
+                    f[i][k] = f[i-1][k] > f[i-1][k-w[i]]+v[i] ? f[i-1][k] : f[i-1][k-w[i]]+v[i];    
+            }
+        }
+        printf("%d\n", f[j-1][t] );
+
+    }
+    return 0;
+}
