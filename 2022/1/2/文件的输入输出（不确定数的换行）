@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include <string.h>
+
+typedef struct 
+{
+	char name[20];
+	double sco[21];
+}ST;
+
+int main()
+{
+	FILE *infp;
+	infp=fopen("gpa.txt","r");
+	if(infp==NULL) exit(0);
+	double max=0,min=5;
+	ST temp;char ss[100],*p;
+	while(!feof(infp)) //不是文件末尾 
+	{
+		fgets(temp.name,20,infp);
+		*(temp.name +strlen(temp.name)-1) = '\0';//将每行字符串结尾的换行符'\n'换为'\0'
+		fgets(ss,100,infp);
+		double crs=0;int i=0;
+		temp.sco [0]=0;
+		p=strtok(ss," ") ;//p指向第一个单词 
+		while(p!=NULL)
+		{
+			temp.sco [++i]=atof(p);//把字符串转换成浮点数
+			if(i%2) 
+				crs+=temp.sco[i];
+			else
+				temp.sco [0]+=temp.sco [i]*temp.sco [i-1];
+			p=strtok(NULL," ");	//p指向下一个单词 
+		}
+		temp.sco[0]/=crs;
+		printf("GPA for %s = %.2f\n",temp.name,temp.sco[0]);
+		if(max<temp.sco [0])
+			max=temp.sco [0];
+		if(min>temp.sco [0])
+			min=temp.sco [0];
+		
+	}
+	printf("max GPA = %.2f\n",max);
+	printf("min GPA = %.2f\n",min);
+	fclose(infp);
+	return 0;	
+} 
