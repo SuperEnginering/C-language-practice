@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<string.h>
+
+long long huo(int n)
+{
+	if(n==1) return 1;
+	if(n==2) return 2;
+	if(n==3) return 4;
+	if(n==4) return 8;
+	if(n>4) 
+	return huo(n-1)+huo(n-2) +huo(n-3) +huo(n-4) ;
+}
+int main()
+{
+    int T;
+    scanf("%d",&T);
+    while(T--)
+    {
+		int n;
+		scanf("%d",&n);
+		long long sum=huo(n);
+		printf("%lld\n",sum);    	
+	}
+    return 0;
+}
