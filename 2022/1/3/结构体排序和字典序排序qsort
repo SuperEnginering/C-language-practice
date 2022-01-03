@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+typedef struct 
+{
+	char name[60];
+	int level;
+	int zhonghe;
+}people;
+people p[10000];
+
+int cmp(people *a,people *b)
+{
+	if(a->zhonghe != b->zhonghe )
+		return a->zhonghe < b->zhonghe ? 1:-1;
+	else 
+	{
+		if(a->level != b->level  )
+			return a->level < b->level  ? 1:-1;
+		else
+		{
+			return strcmp(a->name ,b->name );
+		}
+		
+	}
+	
+}
+
+int main()
+{
+	int T;
+	scanf("%d",&T); 
+	
+	while(T--)
+	{
+		int N;
+		scanf("%d",&N);
+		int i;
+		for(i=0;i<N;i++)
+		{
+			scanf("%s %d %d",p[i].name ,&p[i].level ,&p[i].zhonghe );	
+		}
+		qsort(p,N,sizeof(p[0]),cmp);
+		for(i=0;i<N;i++)
+		{
+			printf("%s %d %d\n",p[i].name ,p[i].level ,p[i].zhonghe );	
+		}
+		printf("\n");
+	}
+	
+	
+    return 0;
+}
