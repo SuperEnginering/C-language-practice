@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<string.h>
+int cmp(int *a,int *b)
+{
+	return *a>*b?1:-1;
+}
+
+int main()
+{
+    int T;
+    scanf("%d",&T);
+    while(T--)
+    {
+    	int N;
+    	scanf("%d",&N);
+    	int z[N],i;
+    	int sum=0;
+    	for(i=0;i<N;i++)
+    	{
+    		scanf("%d",&z[i]);   		
+		}
+		
+		qsort(z,N,sizeof(z[0]),cmp);
+		for(i=0;i<N/2;i++)
+			sum+=z[N/2]-z[i];
+		for(i=N/2;i<N;i++)
+			sum+=z[i]-z[N/2];
+		printf("%d %d\n",z[N/2],abs(sum));	
+	}
+    return 0;
+}
