@@ -1,0 +1,131 @@
+#include <stdio.h>
+#include <string.h>
+
+
+int arr[10000];
+int main()
+{
+	int T;
+	scanf("%d",&T);
+	while(T--)
+	{
+		int year,month,day;
+		scanf("%d-%d-%d",&year,&month,&day);
+		//先判断是否为闰年
+		int flag=28;
+		if((0 == year % 4 && 0 != year % 100) || (0 == year % 400)) 
+			flag+=1;
+//		printf("                  flag=%d\n",flag);
+		int sum=0;
+		
+		switch(month)
+		{
+			case 1:
+				{
+					sum+=day;
+					break;	
+				}
+			case 2:	
+			{
+				sum+=31+day;
+				break;				
+			}
+			case 3:
+			{
+				sum+=31+day+flag;
+				break;				
+			}	
+			case 4:
+			{
+				sum+=31*2+day+flag;
+				break;	
+			}
+			case 5:
+			{
+				sum+=31*2+day+flag+30;
+				break;	
+			}	
+			case 6:
+				{
+					sum+=31*3+day+flag+30;
+					break;	
+				}	
+			case 7:
+				{
+					sum+=31*3+day+flag+30*2;
+					break;	
+				}
+			case 8:
+				{
+					sum+=31*4+day+flag+30*2;
+					break;	
+				}
+			case 9:
+			    {
+					sum+=31*5+day+flag+30*2;
+					break;	
+				}
+			case 10:
+				{
+					sum+=31*5+day+flag+30*3;
+					break;	
+				}
+			case 11:
+				{
+					sum+=31*6+day+flag+30*3;
+					break;	
+				}	
+			case 12:
+				{
+					sum+=31*6+day+flag+30*4;
+					break;	
+				}
+		}
+		printf("%d ",sum);	
+		if (month == 1 || month == 2)//判断month是否为1或2　
+			year--, month += 12;
+		int c = year / 100;
+		int y = year - c * 100;
+		int week = y + y / 4 + c / 4 - 2 * c + 26 * (month + 1) / 10 + day - 1;
+		while (week < 0)
+			week += 7;
+		week %= 7;
+		switch(week)
+		{
+			case 0:
+				{
+					printf("Sunday\n");break;
+				}
+			case 1:
+				{
+					printf("Monday\n");break;
+				}
+			case 2:
+				{
+					printf("Tuesday\n");break;
+				}
+			case 3:
+				{
+					printf("Wednesday\n");break;
+				}
+			case 4:
+				{
+					printf("Thursday\n");break;
+				}
+			case 5:
+				{
+					printf("Friday\n");break;
+				}
+			case 6:
+				{
+					printf("Saturday\n");break;
+				}
+									
+		}
+		
+		
+				
+	}
+	
+	return 0;
+ } 
