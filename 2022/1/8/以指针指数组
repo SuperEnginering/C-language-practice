@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int i, n, *a;
+    scanf("%d", &n);
+/*你的代码将会被嵌在这*/
+	int b[n];
+	a=&b[0];
+    for (i = 0; i < n; ++i)
+    {
+        scanf("%d", &a[i]);
+    }
+    for (i = 0; i < n; ++i)
+    {
+        printf("%d ",a[i]);
+    }
+    printf(" ");
+    return 0;
+} 
