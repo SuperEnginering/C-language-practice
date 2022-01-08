@@ -1,0 +1,180 @@
+#include<stdio.h>
+#include<string.h>
+#include<math.h>
+int InitialMatrix[110][110];//初始矩阵，即输入的矩阵
+int CurrentMatrix[110][110];//当前 矩阵 多用来表示当前余子式
+ int i,j;
+//打印矩阵matrix
+void print(int matrix[][110], int n)//打印矩阵 
+{
+    int j;
+    for (i = 1; i <= n; i++)
+    {
+        for (j = 1; j < n; j++)
+            printf("%d ", matrix[i][j]);
+        printf("%d\n", matrix[i][j]);
+    }
+}
+ 
+//得到矩阵matrix第numi行第numj列的余子式 并存入到CurrentMatrix中
+void GetCurrentMatrix(int numi, int numj, int matrix[][110], int MatrixSize)
+{
+    //tempMatrix为临时矩阵
+    int tempMatrix[110][110];
+    //先全部置为1
+    for ( i = 0; i < MatrixSize + 10; i++)
+    {
+        for (j = 0; j < MatrixSize + 10; j++)
+            tempMatrix[i][j] = 1;
+    }
+ 
+    for (i = 1; i <= MatrixSize - 1; i++)//求余子式矩阵 
+    {
+        for (j = 1; j <= MatrixSize - 1; j++)
+        {
+            if (i >= numi&&j < numj)
+                tempMatrix[i][j] = matrix[i + 1][j];
+            else if (i >= numi&&j >= numj)
+                tempMatrix[i][j] = matrix[i + 1][j + 1];
+            else if (i < numi&&j >= numj)
+                tempMatrix[i][j] = matrix[i][j + 1];
+            else if (i < numi&&j < numj)
+                tempMatrix[i][j] = matrix[i][j];
+        }
+    }
+        
+    //临时矩阵tempMatrix赋值给 当前矩阵CurrentMatrix
+    for (i = 0; i <= MatrixSize - 1; i++)
+    {
+        for (j = 0; j <= MatrixSize - 1; j++)
+            CurrentMatrix[i][j] = tempMatrix[i][j];
+    }
+}
+ 
+//求当前行列式为CurrentMatrix时，CurrentMatrix的值。
+int GetMatrixValue(int MatrixSize)
+{
+    int matrix[110][110];
+    //赋值给matrix  交给matrix去计算 防止破坏CurrentMatrix
+    for (i = 1; i <= MatrixSize; i++)
+    {
+        for ( j = 1; j <= MatrixSize; j++)
+            matrix[i][j] = CurrentMatrix[i][j];
+    }
+ 
+    //一阶二阶 行列式求值
+    if (MatrixSize == 2)
+        return matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1];
+    else if (MatrixSize == 1)
+        return matrix[1][1];
+    else//高阶行列式求值
+    {
+        int Matrixvalue = 0;//CurrentMatrix的值
+        for (i = 1; i <= MatrixSize; i++)
+        {
+            GetCurrentMatrix(1, i, matrix, MatrixSize);//得到第一行 第i列 的 当前余子式 CurrentMatrix 
+ 
+            if (i % 2 == 1)//因为 是 行项为1 所以 列项i为奇数时  逆序数为偶数
+                Matrixvalue += matrix[1][i] * GetMatrixValue(MatrixSize - 1);
+            else
+                Matrixvalue -= matrix[1][i] * GetMatrixValue(MatrixSize - 1);
+        }
+        return Matrixvalue;
+    }
+}
+int gcd(int m, int n)//求逆矩阵时约分 
+{
+    if (m < n)
+        gcd(n, m);
+    if (n == 0)
+        return m;
+    else
+        return gcd(n, m%n);
+}
+ 
+//打印当前两个值相除得到的最简分数
+void final(int n, int m) 
+{
+    if (n*m < 0)
+    {
+        printf("-");
+        final(fabs(n), fabs(m));
+        return;
+    }
+    //printf("%d %d /%d\n",n,m,gcd(n,m));
+    if (m == 1)
+        printf("%d\t", n);
+    else if (n%m == 0)
+        printf("%d\t", n / m);
+    else
+        printf("%d/%d\t", n / gcd(n, m), m / gcd(n, m));
+}
+int main()
+{
+    while (1)
+    {
+        int MatrixSize = 0;//矩阵的size
+        printf("please input the determinant`s size:\n");//输入矩阵的规格 
+        scanf("%d", &MatrixSize);
+        if(scanf("%d", &MatrixSize)==EOF) break;
+        //初始数组 全部 置为 1
+        for (i = 0; i < MatrixSize + 10; i++)
+        {
+            for ( j = 0; j < MatrixSize + 10; j++)
+                InitialMatrix[i][j] = 1;
+        }
+            
+        printf("please input the determinant:\n");//输入矩阵 
+        for ( i = 1; i <= MatrixSize; i++)
+        {
+            for ( j = 1; j <= MatrixSize; j++)
+            {
+                scanf("%d", &InitialMatrix[i][j]);
+                CurrentMatrix[i][j] = InitialMatrix[i][j];//CurrentMatrix即 为当前矩阵 
+            }
+        }
+ 
+ 
+        printf("the value of the determinant is:\n");
+        int MatrixValue = GetMatrixValue(MatrixSize);//矩阵的值 
+ 
+ 
+        printf("ans is %d\n", MatrixValue);
+        int TransposeMatrix[110][110];//转置行列式
+ 
+        for (i = 1; i <= MatrixSize; i++)//求转置行列式 
+        {
+            for (j = 1; j <= MatrixSize; j++)
+            {
+                TransposeMatrix[i][j] = InitialMatrix[j][i];
+                CurrentMatrix[i][j] = TransposeMatrix[i][j];
+            }
+        }
+            
+        printf("Transpose the determinant is：\n"); //转置矩阵 
+        printf("the value of the determinant is:\n"); //转置矩阵的值 
+        print(TransposeMatrix, MatrixSize);
+ 
+        int TransposeMatrixValue = GetMatrixValue(MatrixSize);
+        printf("%d\n", TransposeMatrixValue);
+        if (TransposeMatrixValue == 0)
+        {
+            printf("this matrix dont have inverse matrix!!!\n");
+            continue;//矩阵值为0，无逆矩阵 
+        }
+        printf("***************\n");
+        printf("inverse matrix is:\n");//输出逆矩阵 
+        for ( i = 1; i <= MatrixSize; i++)
+        {
+            for ( j = 1; j <= MatrixSize; j++)
+            {
+                GetCurrentMatrix(i, j, TransposeMatrix, MatrixSize);//得到转置矩阵第i行第j列的 余子式 存入到CurrentMatrix里边
+                if ((i + j) % 2 == 0)
+                    final(GetMatrixValue(MatrixSize - 1), MatrixValue);
+                else
+                    final(-1 * GetMatrixValue(MatrixSize - 1), MatrixValue);
+            }
+            printf("\n");
+        }
+    }
+}
