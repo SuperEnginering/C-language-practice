@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+char father(char a, char b) {
+	if(a==b)
+	 	return '1';
+	 else 
+	 	return '0';	
+
+}
+int t;
+int i;
+char a[2000];
+int main()
+{
+	
+	scanf("%d", &t);
+	getchar();
+	while (t--) 
+	{
+		scanf("%s", a);
+		
+		int len = strlen(a);
+		while (len > 1) 
+		{
+			for ( i = 0; i < len; i += 2)
+				a[i / 2] = father(a[i], a[i + 1]);
+			len /= 2;
+		}
+		printf("%c\n", a[0]);
+	}
+}
