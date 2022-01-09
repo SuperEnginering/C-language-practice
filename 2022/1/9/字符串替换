@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char s[10005];
+char name[]="mwy";
+
+int main(void) {
+    int T;   
+  	scanf("%d",&T);
+  	getchar();
+  while(T--)
+  {
+    gets(s);
+    int len1=strlen(name);
+    int len2=strlen(s);
+    int i, j;
+    char* p1=&name[0],*p2=&s[0];
+    while(*p2!='\0')
+    {
+      //移动
+      int flag=1;
+      if(*p1==*p2)
+      {
+        for(j=0;j<len1;j++)
+        { 
+          //若不相等，则直接推出，进入 
+          if( *(p1+j)!=*(p2+j) ) 
+          {
+            flag=0;
+            break;
+          }
+        }
+        if(flag==1)//可以换了 
+        {
+          printf("return my hard-earned money");
+          p2=p2+len1;
+          continue;
+        }
+      }
+      printf("%c",*p2);
+      p2++;
+    }
+    printf("\n");
+  }
+
+    return 0;
+}
