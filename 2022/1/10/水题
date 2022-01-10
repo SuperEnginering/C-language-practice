@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void writestr(char *f,char *str)
+{
+	FILE *fp;
+	fp=fopen(f,"w");
+	fprintf(fp,"%s",str);
+	fclose(fp);
+	
+ } 
+int main(void) {
+    writestr("t.txt","start");
+    writestr("t.txt","end");
+    return 0;
+}
