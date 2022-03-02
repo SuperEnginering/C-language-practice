@@ -1,0 +1,64 @@
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+int main()
+{
+	int all=0;
+	char sign;
+	cin>>all>>sign;
+	int sum=0;
+	int rest=0;
+	int upline=0;
+	int line=0;
+	for(int i=1;;i+=2)//the sign number per line
+	{
+		if(sum>all)
+		{
+			upline=i-2;
+			rest=all-(sum-upline*2);
+			break;
+		} 
+		if(i==1)
+			sum+=i;
+		else
+			sum+=i*2;
+		line++;	
+	}
+	line--;
+	upline-=2;
+	cout<<upline<<endl<<line<<endl;
+	int upline1=upline;
+//	draw the picture;
+    //up
+	for(int i=0;i<line;i++)//line i
+	{
+		for(int k=0;k<i;k++)
+			cout<<" ";	
+		for(int j=upline1;j>0;j--)//number per line
+		{
+			cout<<sign;
+		}
+		upline1-=2;
+		if(i!=line-1)
+			cout<<endl;
+	}
+	//dowm
+	cout<<endl;
+	int upline2=3;
+	for(int i=line-1;i>0;i--)// i line
+	{
+		for(int k=0;k<i-1;k++)
+			cout<<" ";	
+		for(int j=0;j<upline2;j++)//number per line
+		{
+			cout<<sign;
+		}
+		upline2+=2;
+		
+		cout<<endl;
+	}
+	cout<<rest<<endl;
+	
+	return 0;
+}
